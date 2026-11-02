@@ -1,0 +1,4 @@
+repository "2D Rougelike Dungeon/2D Rougelike Dungeon@2476020597233@cloud"
+  path "/"
+    br "/main"
+    co "/main"
