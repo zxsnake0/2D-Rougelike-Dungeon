@@ -4,6 +4,7 @@ public class BatMovement : MonoBehaviour
 {
     public enum BatState { Patrol, Swoop, Returning }
 
+    //Controls what state the bat is in
     [Header("State Machine")]
     public BatState currentState = BatState.Patrol;
 
@@ -40,6 +41,7 @@ public class BatMovement : MonoBehaviour
 
     void Start()
     {
+        //Gives the bat something to chase after (the player)
         GameObject player = GameObject.FindGameObjectWithTag(playerTag);
         if (player != null) playerTransform = player.transform;
 
@@ -50,6 +52,7 @@ public class BatMovement : MonoBehaviour
     {
         bobTimer += Time.deltaTime * bobSpeed;
 
+        //Changes states based on player proximity
         if (playerTransform != null)
         {
             float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
@@ -64,6 +67,8 @@ public class BatMovement : MonoBehaviour
             }
         }
 
+
+        //Think of this like a gear shift that changes how the bat moves
         switch (currentState)
         {
             case BatState.Patrol:
