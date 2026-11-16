@@ -10,6 +10,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpingPower = 16f;
     private bool isFacingRight = true;
 
+    // Public access for PlayerAttack
+    public bool IsFacingRight => isFacingRight;
+    public Rigidbody2D RB => rb;
+
     //Double Jumping
     [SerializeField] public int maxJumps = 1;
     public int jumpsRemaining;
@@ -315,6 +319,11 @@ public class PlayerMovement : MonoBehaviour
         rb.position = position;
 
         ResetAirActions();
+    }
+
+    public bool IsPlayerGrounded()
+    {
+        return IsGrounded();
     }
 
 
